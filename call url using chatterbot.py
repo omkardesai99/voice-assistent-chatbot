@@ -5,15 +5,14 @@ from time import strftime
 import os
 import sys
 import re
-import smtplib
 import pyttsx3
 from datetime import datetime
-
-#hello='freakoff*12345678910#'
+import smtplib, ssl
 
 global day_time
 n=datetime.now()
 day_time=n.strftime('%H')
+
 #interpret user voice response
 engine=pyttsx3.init("sapi5")
 rate=engine.getProperty("rate")
@@ -70,8 +69,8 @@ def assistance(command):
         mail = smtplib.SMTP('smtp.gmail.com', 587)#First it will initaite gmail SMTP 
         mail.ehlo()#then identify the server
         mail.starttls()#then encypting the session
-        mail.login('omkarsdesai.1999@gmail.com', 'freakoff*12345678910#')
-        mail.sendmail('omkarsdesai.1999@gmail.com','desaishrii1999@gmail.com', 'try')
+        mail.login('#your email', 'your email password')
+        mail.sendmail('your email','recipients email', 'try')
         mail.close()
         
     elif 'open youtube' in command:
@@ -90,29 +89,4 @@ microResponse('the time is' + day_time)
 while True:
     assistance(myCommand())
 
-
-
-'''
-import os
-import smtplib, ssl
-mail = smtplib.SMTP('smtp.gmail.com', 587)#First it will initaite gmail SMTP 
-mail.ehlo()#then identify the server
-mail.starttls()#then encypting the session
-mail.login('omkarsdesai.1999@gmail.com', os.environ['password'])
-mail.sendmail('omkarsdesai.1999@gmail.com','desaishrii1999@gmail.com', 'hi')
-mail.close()
-
-
-import smtplib, ssl
-
-port = 465  # For SSL
-password = input("Type your password and press enter: ")
-
-# Create a secure SSL context
-context = ssl.create_default_context()
-
-with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-    server.login("my@gmail.com", password)
-    # TODO: Send email here
-'''
 
