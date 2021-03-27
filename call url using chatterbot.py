@@ -84,7 +84,7 @@ def assistance(command):
         sys.exit()
     return day_time
         
-microResponse('this is omkar desais personal voice assistance how may i help u?')
+microResponse('this is your personal voice assistance how may i help u?')
 microResponse('the time is' + day_time)
 while True:
     assistance(myCommand())
